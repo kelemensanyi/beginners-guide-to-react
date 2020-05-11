@@ -1,0 +1,69 @@
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+
+<script type="text/babel">
+  const rootElement = document.getElementById('root')
+  //
+  // const time = new Date().toLocaleTimeString()
+  // const element = <div>{time}</div>
+
+  // function tick() {
+  //   const time = new Date().toLocaleTimeString()
+  //   const element = <div>{time}</div>
+  //   ReactDOM.render(element, rootElement)
+  // }
+
+  // function tick() {
+  //   const time = new Date().toLocaleTimeString()
+  //   const element = (
+  //     <div>
+  //       <div>Hello</div>
+  //       {time}
+  //     </div>
+  //   )
+  //   ReactDOM.render(element, rootElement)
+  // }
+
+  // function tick() {
+  //   const time = new Date().toLocaleTimeString()
+  //   const element = `
+  //     <div>
+  //       <div>Hello</div>
+  //       ${time}
+  //     </div>
+  //   `
+  //   rootElement.innerHTML = element
+  // }
+
+  // Focus is lost if user clicks into the input field
+  // function tick() {
+  //   const time = new Date().toLocaleTimeString()
+  //   const element = `
+  //     <div>
+  //       <input value="${time}" />
+  //       <input value="${time}" />
+  //     </div>
+  //   `
+  //   rootElement.innerHTML = element
+  // }
+
+  // No focus is lost if user clicks into the input field
+  function tick() {
+    const time = new Date().toLocaleTimeString()
+    const element = (
+      <div>
+        <input value={time} />
+        <input value={time} />
+      </div>
+    )
+    ReactDOM.render(element, rootElement)
+  }
+
+  tick()
+  setInterval(tick, 1000)
+
+</script>
+</body>
