@@ -1,0 +1,54 @@
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+  <script type="text/babel">
+    function UsernameForm() {
+
+      const usernameInputRef = React.useRef()
+
+      function handleSubmit(event) {
+
+        // LEARN: this is to prevent full page refresh
+        event.preventDefault()
+
+        // LEARN: please not use this: it breaks encapsulation
+        // const username = document.querySelector('input').value
+
+        console.dir(event.target) // LEARN: console.dir
+
+        // LEARN: britle because it depends on ordering
+        // const username = event.target[0].value
+        // const username = event.target.elements[0].value
+
+        const username = event.target.elements.usernameInput.value
+
+        // LEARN: Using a ref works, but might be unnecessary
+        // const username = usernameInputRef.current.value
+
+        alert(`You entered: ${username}`)
+      }
+      return (
+        // LEARN: better to have the onSubmit handler on the form
+        // because users like to press enter in the input fields and
+        // that is also captured that way
+
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="usernameInput">Username:</label>
+            <input ref={usernameInputRef} id="usernameInput" type="text" />
+          </div>
+
+          {
+            // LEARN: always specify a type for a button
+            // it is implicitly submit, but use button type for cancel
+          }
+          <button type="submit">Submit</button>
+        </form>
+      )
+    }
+
+    ReactDOM.render(<UsernameForm />, document.getElementById('root'))
+  </script>
+</body>
